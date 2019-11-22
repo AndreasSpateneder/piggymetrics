@@ -8,7 +8,7 @@ env:
   secure: ZsrEpvc06rDKkhlaMQGTEuukrC6tLREaAJJE4n8zM7m4FBB9U2UoY+j/+XIKc4yjKxMlnYJ6MmMRwDria330wAweNd15gEMMo5AEaZvl5imkZRw7wlPeCBwDZ40mc43rxVV5BOV9ooxFSLbRPznwaFzusNZndcAoCpWmPuH2Hh3tvj70zB9fWL3NzynnWQqd4Dnbf3g0AYoaGpq3sdDQRsb/cbiS12i9n2iTAc/bcGxesYthw8vab5zPVDIP9lN6akFNTsWyoq51m1qeXZHwTT4KblRHLzRsZBTVeBYX+dwFzyOWOlWmVVDahUP0LmCWxcduQYZLsdCP7Q5ekoQYMaQMOU/8p9TN9NV5bnxfcJNE9jhqEdO2ThkCCPOWugtn/siTHyP+sysYk5f4/ifD7GgqrHMU2oZ17ht84R7GBIKlTmHxlTBCPIjSzxO8aOFhF0aBxt+aNwayRArWm5jOuVWD4ADSO8xr9p8ZWVLgLQPILdXON5p0Mfst6+F5aOZmtAoCw39+Fqg1AM9DC+A8Y8Ru4fwV6M1x7p8ARXzBDZxZnrJserjUYMia1bT+dxLBdPBw5g2ghbyZ96/Of+qkVrVbonQNQO4HJigmrhfrBObLRzbP4Su+wCxiYG7Z1IUMRlAuATYUbFWaCy/KMOIESLeyQUyV4EpFoloxo/7pdns=
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-- docker login -u $DOCKER_USER -p $DOCKER_PASS docker.io
+- docker login -u amnonxx -p 9ATsrpNEFstn\$J9
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
 - export CONFIG=amnonxx/piggymetrics-config
