@@ -26,13 +26,15 @@ env:
   - secure: a+KUVrNeVd4AjDa6QALj27sc5uJaiWtAs3++Yr1FGV1JJXNrcUZiVhegxZFSwSAiz/MtDzDNGi1wTnEkZe93oU7dhz8+wtVjKIuPKt/ymvvliF9vCClmPzgA3aMdjjRDc1mWpZt3Nn3urSgcnjd7LBDsdIRrXw1hYhA9yZHwuS8Fe5jWgShl5a5OP2fqWDhEq3Kze6DYAStR4fSAi86FQhnORj6E3u2dkt/JP6uFDmJ+uOanaZclplg3Y5xRz/YgYi+RUlWQWaYN/VQMPYYzPDztjtDLzLwlBhNYXcXbIzt7xIc48/4hJOMVHnBS/sNgt5lZKS4gSan5tDnsVTyUeXATIQdd9oHMmtr4/TSdtBGmYXBHSdZAWOef6xacAwVAk/SHGR4p6TEWwnsRlnHxaSWEfenUAUhwlWQrZTZVifjm9sMp1tIWIW1r8HtY5tOBtHCFsnrIcbUI/Axxvp0KfRiQRsSvd0DhSGSguUXQmG6m/ZU2IG2XgLVZRct0J0cxP4k04azsYBD4w+rVr1UzROhBB7nPs17/gx0Zjp9UpX4NLJa69513KHe+uRt6L8UUNmwxzc27DYk27vl9D0l07OYYeZugApTOfvKGjbHrYk2chUYtOsg7r0t4hYPljRn8JO8Aihy4lXGfQ5QyOhVA8IbFPvVRUHu7McZ2GeqyAHw=
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- echo $DOCKER_PASS |docker login -u $DOCKER_USER --password-stdin docker.io
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
 - export CONFIG=amnonxx/piggymetrics-config
 - docker build -t $CONFIG:$COMMIT ./config
 - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
 - docker push $CONFIG
+
+
 - export REGISTRY=amnonxx/piggymetrics-registry
 - docker build -t $REGISTRY:$COMMIT ./registry
 - docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
