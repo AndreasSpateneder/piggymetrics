@@ -28,9 +28,9 @@ after_success:
 - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
-- export CONFIG=https://hub.docker.com/repository/docker/amnonxx/piggymetrics-config
+- export CONFIG=amnonxx/piggymetrics-config
 - docker build -t $CONFIG:$COMMIT ./config
-- docker tag $CONFIG:$COMMIT $CONFIG:$TAG
+- docker tag $CONFIG:$COMMIT https://hub.docker.com/repository/docker/$CONFIG:$TAG
 - docker push $CONFIG
 - export REGISTRY=amnonxx/piggymetrics-registry
 - docker build -t $REGISTRY:$COMMIT ./registry
