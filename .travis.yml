@@ -21,11 +21,11 @@ after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
-- export CONFIG=sqshq/piggymetrics-config
+- export CONFIG=amnonxx/piggymetricsg
 - docker build -t $CONFIG:$COMMIT ./config
 - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
 - docker push $CONFIG
-- export REGISTRY=sqshq/piggymetrics-registry
+- export REGISTRY=https://hub.docker.com/repository/docker/
 - docker build -t $REGISTRY:$COMMIT ./registry
 - docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
 - docker push $REGISTRY
