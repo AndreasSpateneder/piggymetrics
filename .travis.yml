@@ -31,7 +31,7 @@ after_success:
 - export CONFIG=amnonxx/piggymetrics-config
 - docker build -t $CONFIG:$COMMIT ./config
 - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
-- docker push amnonxx/piggymetrics-config:test
+- docker push $CONFIG
 
 
 - export REGISTRY=amnonxx/piggymetrics-registry
