@@ -26,43 +26,43 @@ after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
-- export CONFIG=amnonxx/piggymetricsg
+- export CONFIG=amnonxx/piggymetrics-config
 - docker build -t $CONFIG:$COMMIT ./config
 - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
 - docker push $CONFIG
-- export REGISTRY=https://hub.docker.com/repository/docker/amnonxx/piggymetrics
+- export REGISTRY=amnonxx/piggymetrics-registry
 - docker build -t $REGISTRY:$COMMIT ./registry
 - docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
 - docker push $REGISTRY
-- export GATEWAY=AndreasSpateneder/piggymetrics-gateway
+- export GATEWAY=amnonxx/piggymetrics-gateway
 - docker build -t $GATEWAY:$COMMIT ./gateway
 - docker tag $GATEWAY:$COMMIT $GATEWAY:$TAG
 - docker push $GATEWAY
-- export AUTH_SERVICE=AndreasSpateneder/piggymetrics-auth-service
+- export AUTH_SERVICE=amnonxx/piggymetrics-auth-service
 - docker build -t $AUTH_SERVICE:$COMMIT ./auth-service
 - docker tag $AUTH_SERVICE:$COMMIT $AUTH_SERVICE:$TAG
 - docker push $AUTH_SERVICE
-- export ACCOUNT_SERVICE=AndreasSpateneder/piggymetrics-account-service
+- export ACCOUNT_SERVICE=amnonxx/piggymetrics-account-service
 - docker build -t $ACCOUNT_SERVICE:$COMMIT ./account-service
 - docker tag $ACCOUNT_SERVICE:$COMMIT $ACCOUNT_SERVICE:$TAG
 - docker push $ACCOUNT_SERVICE
-- export STATISTICS_SERVICE=AndreasSpateneder/piggymetrics-statistics-service
+- export STATISTICS_SERVICE=amnonxx/piggymetrics-statistics-service
 - docker build -t $STATISTICS_SERVICE:$COMMIT ./statistics-service
 - docker tag $STATISTICS_SERVICE:$COMMIT $STATISTICS_SERVICE:$TAG
 - docker push $STATISTICS_SERVICE
-- export NOTIFICATION_SERVICE=AndreasSpateneder/piggymetrics-notification-service
+- export NOTIFICATION_SERVICE=amnonxx/piggymetrics-notification-service
 - docker build -t $NOTIFICATION_SERVICE:$COMMIT ./notification-service
 - docker tag $NOTIFICATION_SERVICE:$COMMIT $NOTIFICATION_SERVICE:$TAG
 - docker push $NOTIFICATION_SERVICE
-- export MONITORING=AndreasSpateneder/piggymetrics-monitoring
+- export MONITORING=amnonxx/piggymetrics-monitoring
 - docker build -t $MONITORING:$COMMIT ./monitoring
 - docker tag $MONITORING:$COMMIT $MONITORING:$TAG
 - docker push $MONITORING
-- export TURBINE=AndreasSpateneder/piggymetrics-turbine-stream-service
+- export TURBINE=amnonxx/piggymetrics-turbine-stream-service
 - docker build -t $TURBINE:$COMMIT ./turbine-stream-service
 - docker tag $TURBINE:$COMMIT $TURBINE:$TAG
 - docker push $TURBINE
-- export MONGO_DB=AndreasSpateneder/piggymetrics-mongodb
+- export MONGO_DB=amnonxx/piggymetrics-mongodb
 - docker build -t $MONGO_DB:$COMMIT ./mongodb
 - docker tag $MONGO_DB:$COMMIT $MONGO_DB:$TAG
 - docker push $MONGO_DB
